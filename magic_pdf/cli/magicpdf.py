@@ -20,10 +20,10 @@
 python magicpdf.py --json  s3://llm-pdf-text/scihub/xxxx.json?bytes=0,81350 
 python magicpdf.py --pdf  /home/llm/Downloads/xxxx.pdf --model /home/llm/Downloads/xxxx.json  或者 python magicpdf.py --pdf  /home/llm/Downloads/xxxx.pdf
 """
-
 import os
 import json as json_parse
 import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 import click
 from loguru import logger
 from pathlib import Path
@@ -285,5 +285,23 @@ def pdf_command(pdf, model, method):
 if __name__ == "__main__":
     """
     python magic_pdf/cli/magicpdf.py json-command --json s3://llm-pdf-text/pdf_ebook_and_paper/manual/v001/part-660407a28beb-000002.jsonl?bytes=0,63551
+    python magic_pdf/cli/magicpdf.py pdf-command --pdf 'D:/Magic-PDF/NUS_Kaiqi_Chen_CV.pdf'
     """
     cli()
+    """
+    用这个调试
+    {
+            "name": "Python pdf",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "pdf-command",
+                "--pdf",
+                "D:/Magic-PDF/NUS_Kaiqi_Chen_CV.pdf",
+            ],
+        
+        }
+    """
